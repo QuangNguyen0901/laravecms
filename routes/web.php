@@ -22,3 +22,7 @@ Route::get('about',function (){
 Route::get('where',function (){
     return Redirect::to('about');
 });
+
+Route::get('profile/{name}','ProfileController@showProfile');
+
+
