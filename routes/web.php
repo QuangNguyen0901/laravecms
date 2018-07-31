@@ -11,6 +11,8 @@
 |
 */
 
+use App\Post;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,6 +35,7 @@ Route::get('insert',function (){
 Route::get('read',function(){
     $result = DB::select('select * from users where id = ? ',[1]);
     foreach ($result as $user ){
+
         return $user->name;
     }
 });
@@ -47,4 +50,11 @@ Route::get('delete',function (){
     return $deleted;
 });
 
+Route::get('readAll',function (){
+    $posts = Post::all();
+    foreach ($posts as $p){
+        echo $p->tittle;
+        echo '<br>';
+    }
+});
 
