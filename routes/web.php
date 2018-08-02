@@ -58,3 +58,22 @@ Route::get('readAll',function (){
     }
 });
 
+//Route::get('findId', function (){
+//    $item = Post::where('id',2)
+//    ->get();
+//    foreach ($item as $i) {
+//        echo $i->tittle;
+//        echo '<br>';
+//    }
+//});
+
+Route::get('findId', function (){
+    $item = Post::where('id','>=',2)
+        ->get();
+//    dd($item);
+    foreach ($item as $i) {
+        echo $i->tittle;
+        echo '<br>';
+    }
+});
+
