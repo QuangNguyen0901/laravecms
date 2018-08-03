@@ -77,3 +77,22 @@ Route::get('findId', function (){
     }
 });
 
+Route::get('findIdx', function (){
+    $item = Post::where('id','>=',1)
+        ->where('tittle','like','%abc%')
+        ->orderBy('id','desc')
+        ->get();
+//    dd($item);
+    foreach ($item as $i) {
+        echo $i->tittle;
+        echo '<br>';
+    }
+});
+
+Route::get('insertORM', function (){
+   $p = new Post;
+   $p->tittle = 'abc 222';
+   $p->body = 'xcscs';
+   $p->user_id = '1';
+   $p->save();
+});
