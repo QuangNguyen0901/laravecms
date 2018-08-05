@@ -50,6 +50,8 @@ Route::get('delete',function (){
     return $deleted;
 });
 
+//LAM VIEC VOI DB bang ORM --------------------------------------------------
+
 Route::get('readAll',function (){
     $posts = Post::all();
     foreach ($posts as $p){
@@ -90,9 +92,29 @@ Route::get('findIdx', function (){
 });
 
 Route::get('insertORM', function (){
-   $p = new Post;
-   $p->tittle = 'abc 222';
-   $p->body = 'xcscs';
-   $p->user_id = '1';
-   $p->save();
+    $p = new Post;
+    $p->tittle = 'abc 222';
+    $p->body = 'xcscs';
+    $p->user_id = '1';
+    $p->save();
 });
+
+Route::get('updateORM', function (){
+    $p = Post::where('id',3)->first();
+    $p->tittle = 'uuuu2';
+    $p->body = 'xdn';
+    $p->save();
+    return 'update DONE';
+});
+
+Route::get('deleteORM',function (){
+    Post::where('id','>=',3)
+        ->delete();
+});
+
+
+Route::get('destroyORM',function(){
+    Post::destroy([2,3]);
+});
+
+
